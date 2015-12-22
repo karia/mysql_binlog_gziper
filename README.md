@@ -7,6 +7,6 @@ MySQLのbinlogをどうしても定期的にgzipしたい貴方の為のshellscr
 (root権限以外では正常動作しません)
 
 ```
-# ./binlog_gziper
+# ./binlog_gziper.sh
 ```
 
