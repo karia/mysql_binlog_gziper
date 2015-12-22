@@ -7,8 +7,15 @@ if [ ${EUID:-${UID}} -ne 0 ]; then
   exit 1
 fi
 
-FILELIST=/tmp/log_filelist
-/usr/bin/find /var/log/mysql -type f -regex ".*mysql-bin\.[0-9]+" -print | sort > $FILELIST
+if [ $# -ne 1 ]; then
+  echo "usage: $0 /path/to/mysql_binlog_dir"
+  exit 0
+fi
+
+DIR_BINLOG=$1
+FILELIST=/tmp/binlog_filelist
+
+/usr/bin/find $DIR_BINLOG -type f -regex ".*mysql-bin\.[0-9]+" -print | sort > $FILELIST
 
 while read TMPFILE
 do
