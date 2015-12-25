@@ -19,7 +19,7 @@ FILELIST=/tmp/binlog_filelist
 
 while read TMPFILE
 do
-  fuser $TMPFILE
+  /sbin/fuser $TMPFILE
   if [ $? -eq 1 ] ; then
     nice -5 gzip $TMPFILE
     echo "gzip finished: " $TMPFILE
@@ -30,4 +30,3 @@ do
 done < $FILELIST
 
 exit 0
-
